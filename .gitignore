@@ -1,0 +1,6 @@
+*.o
+*.BIN
+
+toolchain
+
+nvram
