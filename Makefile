@@ -9,7 +9,8 @@ CFLAGS  = -std=c89 -O2 -Wall -Wextra -nostdlib -ffreestanding -fno-pic
 ASFLAGS = -mips3
 
 OBJ_FIRM=\
-firmware/boot.o
+firmware/boot.o \
+firmware/g364.o
 
 .DEFAULT: FIRM.BIN
 .PHONY: clean
