@@ -2,15 +2,21 @@
 
 .globl _boot_entry
 
-.section .boot
-
-_boot_entry:
-        jal		g364_init				# jump to g364_init and save position to $ra
-        j .
-
 .section .bss
-.align 16
 
 _stack_end:
 .skip 1024
 _stack_start:
+
+.text
+
+_boot_entry:
+        # setup stack
+        li $sp, _stack_start
+
+        # jump to high level bios
+        jal bios_start
+
+        li $v0, 0xFAF0
+        nop
+        j .

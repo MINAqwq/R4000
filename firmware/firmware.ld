@@ -4,19 +4,28 @@ OUTPUT_FORMAT(binary)
 SECTIONS
 {
 	. = 0xffffffffbfc00000;
-	
-	.text : ALIGN(0x8) {
-		*(.boot)
+
+	.text : ALIGN(16)
+	{
 		*(.text)
 	}
-
-	.data : ALIGN(0x8) {
+ 
+	.rodata : ALIGN(16)
+	{
+		*(.rodata)
+	}
+ 
+	.data : ALIGN(16)
+	{
 		*(.data)
 	}
 
-	.bss : ALIGN(0x8) {
-		*(.COMMON)
+	.bss : ALIGN(16)
+	{
+		*(COMMON)
 		*(.bss)
 		*(.sbss)
+		*(PROGBITS)
 	}
+
 }
